@@ -8,4 +8,7 @@
 
     <!-- 自动扫描装配 -->
     <!--<context:component-scan base-package="com.baidu"/>-->
+    <!-- spring的属性加载器，加载properties文件中的属性 -->
+
+    <bean class="org.apache.zookeeper.ZooKeeper"></bean>
 </beans>

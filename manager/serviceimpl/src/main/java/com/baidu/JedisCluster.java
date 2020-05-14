@@ -1,8 +1,5 @@
 package com.baidu;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisPoolConfig;
@@ -10,29 +7,15 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
+public class JedisCluster {
     private static redis.clients.jedis.JedisCluster jedis;
 
-    @Value("")
-    private static String jedisHost;
+    private static String jedisHost = "182.61.139.206:7001;182.61.139.206:7002;182.61.139.206:7003;182.61.139.206:7004;182.61.139.206:7005;182.61.139.206:7006";
 
 
     public static redis.clients.jedis.JedisCluster getInstance()
     {
-        if(jedisHost == null)
+        if(jedis == null)
         {
             synchronized (JedisCluster.class)
             {
@@ -41,9 +24,9 @@ public class AppTest
                 if (jedisHost != null)
                 {
                     String[] jedisHosts = jedisHost.split(";");
-                    for(int i = 0; i <= jedisHosts.length; i++)
+                    for(int i = 0; i <= jedisHosts.length - 1; i++)
                     {
-                        String[] host_port = jedisHosts[i].split("：");
+                        String[] host_port = jedisHosts[i].split(":");
                         hostAndPortsSet.add(new HostAndPort(host_port[0],Integer.valueOf(host_port[1])));
                     }
 
@@ -67,7 +50,4 @@ public class AppTest
         return jedis;
     }
 
-    public static void main(String[] args) {
-        AppTest.getInstance().set("a","a");
-    }
 }

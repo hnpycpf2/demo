@@ -15,6 +15,8 @@ public class DemoServiceImpl  implements DemoService{
     @Override
     public String get() {
 
-        return "test";
+     /*JedisCluster.getInstance().set("test1", "1");*/
+        String test1 = JedisCluster.getInstance().get("test1");
+        return test1;
     }
 }
