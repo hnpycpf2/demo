@@ -31,7 +31,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <spring.version>4.2.6.RELEASE</spring.version>
-    <json.version>2.9.6</json.version>
+    <json.version>2.13.4.1</json.version>
   </properties>
 
   <dependencies>
